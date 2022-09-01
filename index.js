@@ -39,7 +39,7 @@ app.post('/addparcel', (req, res) => {
         sender: req.body.sender,
         address: req.body.address,
         weight: parseInt(req.body.weight),
-        fragile: req.body.fragile === "True",
+        fragile: req.body.fragile === "true",
 
     });
     newParcel.save((err) => {
@@ -64,7 +64,13 @@ app.get('/listparcelssender', (req,res) => {
 });
 
 app.post('/listparcelssender', (req,res) =>{
-    Parcel.find({ sender : req.body.sender }, (err, docs) => {
+    // console.log(req.body)
+    let query = { sender : req.body.sender };
+    if (req.body.bigparcel === 'on'){
+        query.weight = { $gt : 5 };
+    }
+    // console.log(query);
+    Parcel.find(query, (err, docs) => {
         res.render("listparcelssender.html", {db: docs});
     });
 });
@@ -92,6 +98,10 @@ app.post('/delparcel', (req, res) => {
         Parcel.deleteMany({ 'sender': req.body.delsel }, function (err, doc) {
             if(err){console.log(err);};
         });
+    } else if (req.body.delby === "dest"){
+        Parcel.deleteMany({ 'address': req.body.delsel, weight : { $lt : 1} }, function (err, doc) {
+            if(err){console.log(err);};
+        });
     }
 
     res.redirect("/listparcelsall");
@@ -109,7 +119,7 @@ app.post('/updateparcel', (req, res) => {
         ...req.body
     };
     updatedDoc.weight = parseInt(updatedDoc.weight);
-    updatedDoc.fragile = updatedDoc.fragile === "True";
+    updatedDoc.fragile = updatedDoc.fragile === "true";
     let updateQuery = {$set : updatedDoc};
     Parcel.updateOne(findQuery, updateQuery, function (err, doc) {
         if (err){console.log(err)};
