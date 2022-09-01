@@ -1,0 +1,49 @@
+.nav{
+    margin-left: 12px;
+}
+
+body {
+    background-image: url("/bg.jpg");
+    background-size: 90vw 90vh;
+    color: whitesmoke;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+a {
+    padding: 5px;
+}
+
+a:link, a:visited {
+    color: whitesmoke;
+    border: 1px solid black;
+    background-color: gray;
+}
+
+
+a:hover {
+    color: black;
+    background-color: grey;
+    border: 1px solid whitesmoke;
+}
+
+table td {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.listtable {
+    width: 100%;
+}
+.listtable td,th {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+}
+
+.banner {
+    background-color: olive;
+}
+
+.navbar {
+    background-color: darkolivegreen;
+}

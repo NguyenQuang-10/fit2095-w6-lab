@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List parcels by weight</title>
+        <link rel="stylesheet" href="/styles.css">
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+    </head>
+    <body>
+        <header>
+            <div class="navbar d-flex justify-content-around p-2 m-0"> 
+                <a class="btn btn-primary" href="/">Home</a>
+                <a class="btn btn-primary" href="addparcel">Add parcel</a> 
+                <a class="btn btn-primary" href="listparcelsall">List all parcels</a>
+                <a class="btn btn-primary" href="listparcelssender">List parcels by sender</a>
+                <a class="btn btn-primary" href="listparcelsweight">List parcels by weight</a>
+                <a class="btn btn-primary" href="delparcel">Delete parcel</a> 
+                <a class="btn btn-primary" href="updateparcel">Update parcel</a>
+            </div>            
+        <div class="container-fluid mx-0 p-2  banner">
+            <h1><img src="/pepe.jpg" height="70" width="70">  List parcels by weight</h1>
+        </div>
+    </header>
+        <form class="form-inline d-flex mb-0 mt-2 mx-2" action="/listparcelsweight" method="post">
+            <div class="form-group m-0 p-0">
+                 <input style="background-color: whitesmoke;" type="text" class="form-control-plaintext" id="minWeight" placeholder="Min weight" name="min">
+            </div>
+            <div class="form-group mx-sm-3 p-0">
+                <input style="background-color: whitesmoke;" type="text" class="form-control-plaintext" id="maxWeight" placeholder="Max weight" name="max">
+           </div>
+            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+        </form>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">ID</th>
+                  <th scope="col">Sender</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">Weight</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for ( let i =0; i< db.length;i++){ %>
+                    <tr>
+                        <td><%= db[i]._id %></td>
+                        <td><%= db[i].sender %></td>
+                        <td><%= db[i].address %></td>
+                        <td><%= db[i].weight %></td>
+                        <td><%= db[i].fragile%></td>
+                    </tr>
+                 <% }%>
+            </tbody>  
+        </table>
+        
+        
+    </body>
+</html>

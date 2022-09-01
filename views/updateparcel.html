@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Update parcel</title>
+        <link rel="stylesheet" href="/styles.css">
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+    </head>
+    <body>
+        <header>
+            <div class="navbar d-flex justify-content-around p-2 m-0"> 
+                <a class="btn btn-primary" href="/">Home</a>
+                <a class="btn btn-primary" href="addparcel">Add parcel</a> 
+                <a class="btn btn-primary" href="listparcelsall">List all parcels</a>
+                <a class="btn btn-primary" href="listparcelssender">List parcels by sender</a>
+                <a class="btn btn-primary" href="listparcelsweight">List parcels by weight</a>
+                <a class="btn btn-primary" href="delparcel">Delete parcel</a> 
+                <a class="btn btn-primary" href="updateparcel">Update parcel</a>
+            </div>            
+        <div class="container-fluid mx-0 p-2  banner">
+            <h1><img src="/pepe.jpg" height="70" width="70">  Update Parcel Information</h1>
+        </div>
+    </header>
+    <form class="text-primary" action="/updateparcel" method="post">
+        <div class="form-group row">
+            <label for="idInput" class="col-sm-2 col-form-label">ID</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="idInput" name="id" placeholder="ID">
+            </div>
+          </div>
+        <div class="form-group row">
+          <label for="senderInput" class="col-sm-2 col-form-label">Sender</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="senderInput" name="sender" placeholder="Sender">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="addressInput" class="col-sm-2 col-form-label">Address</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="addressInput" name="address" placeholder="Address">
+          </div>
+        </div>
+        <div class="form-group row">
+            <label for="weightInput" class="col-sm-2 col-form-label">Weight</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="weightInput" name="weight" placeholder="Weight">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="fragileInput" class="col-sm-2 col-form-label" >Fragile</label>
+            <div class="col-sm-10">
+              <select type="text" class="form-control" id="fragileInput" name="fragile">
+                <option value="true">True</option>
+                <option value="false">False</option>
+              </select>
+            </div>
+        </div>
+        <div class="col-sm-10" >
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+</html>
