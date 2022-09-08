@@ -10,6 +10,7 @@ module.exports = {
             _id: new mongoose.Types.ObjectId(),
             sender: mongoose.Types.ObjectId(req.body.sender),
             address: req.body.address,
+            cost: parseFloat(req.body.cost),
             weight: parseFloat(req.body.weight),
             fragile: req.body.fragile === "true"
         }
@@ -59,5 +60,36 @@ module.exports = {
                 res.status(200).json(doc);
             }
         });
+    },
+    deleteByAttr: (req,res) => {
+        if (req.body.attr === "weight"){
+            Parcel.deleteMany( { weight : parseFloat(req.body.attr_val) }, (err, doc)=>{
+                if (err) {
+                    res.status(400).json(err);
+                } else {
+                    res.status(200).json(doc);
+                }
+            } );
+        } else if (req.body.attr === "cost"){
+            Parcel.deleteMany( { cost : parseFloat(req.body.attr_val) }, (err, doc)=>{
+                if (err) {
+                    res.status(400).json(err);
+                } else {
+                    res.status(200).json(doc);
+                }
+            } );
+
+        } else if (req.body.attr === "id"){
+            Parcel.deleteMany( { _id : mongoose.Types.ObjectId(req.body.attr_val) }, (err, doc)=>{
+                if (err) {
+                    res.status(400).json(err);
+                } else {
+                    res.status(200).json(doc);
+                }
+            } );
+        } else {
+            res.status(400).json({ error : "Invalid attribute type" });
+        }
+
     }
 }

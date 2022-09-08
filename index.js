@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 
 const senders = require("./routers/sender.js");
 const parcels = require("./routers/parcel.js");
+const parcel = require("./models/parcel.js");
 
 const app = express();
 
@@ -27,3 +28,4 @@ app.put("/sender", senders.updateOne);
 app.get("/parcel", parcels.getByAddress)
 app.post("/parcel", parcels.addParcel);
 app.put("/parcel", parcels.updateAddress);
+app.delete("/parcel", parcels.deleteByAttr);
